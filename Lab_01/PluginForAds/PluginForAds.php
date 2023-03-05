@@ -72,7 +72,6 @@ function add_mod_advertisment_form()
 	$res = '';
 
 	$res = '<div class="container">
-
 		<h2>Add New Advertisement</h2>
 		<form method="post">
 			<input type="hidden" name="form_do_change" value="Y">
@@ -81,9 +80,7 @@ function add_mod_advertisment_form()
 					<label for="name">Name:</label>
 				</div>
 				<div class="col-75">
-
 					<input type="text" id="name" name="name" placeholder="Name of advertisment" value="' . $val_name . '">
-
 				</div>
 			</div>
 			<div class="row">
@@ -91,20 +88,17 @@ function add_mod_advertisment_form()
 					<label for="content">Content:</label>
 				</div>
 				<div class="col-75">
-
 					<textarea rows="4" cols="50" id="content" name="content" placeholder="Content of advertisment">' . $val_content . '</textarea>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-25">
 					<label for="time_start">Start date:</label>
-
 					<input type="date" id="time_start" name="time_start" min="2023-01-03"  value="' . $val_start_date . '">
 				</div>
 				<div class="col-75">
 					<label for="time_end">End date:</label>
 					<input type="date" id="time_end" name="time_end" min="2023-01-01"  value="' . $val_end_date . '">
-
 				</div>
 			</div>
 			<div class="row">
@@ -115,7 +109,6 @@ function add_mod_advertisment_form()
 				<div class="col-75">
 					<label for="active_hours_stop">End time:</label>
 					<input type="time" id="active_hours_stop" name="active_hours_stop"  value="' . $val_end_time . '">
-
 				</div>
 			</div>
 			<div class="row">
@@ -267,41 +260,8 @@ function ad_register_styles()
 
 add_action('init', 'ad_register_styles');
 
-<<<<<<< HEAD
 function jal_install()
 {
-=======
-function save_ad_to_database($post_id){
-	$formName = $_POST['name'];
-	$formContent = $_POST['content'];
-	$formTimeStart = $_POST['time_start'];
-	$formTimeEnd = $_POST['time_end'];
-	$formActiveHoursStart = $_POST['active_hours_start'];
-	$formActiveHoursStop = $_POST['active_hours_start'];
-	if($_POST['active']) $formActive = TRUE;
-	else $formActive = FALSE;
-
-	global $wpdb
-
-	$wpdb->insert(
-		$wpdb->prefix.'ad_plugin',
-		[
-			'name' => $formName,
-			'content' => $formContent,
-			'time_start' => $formTimeStart,
-			'time_end' => $formTimeEnd,
-			'active_hours_start' => $formActiveHoursStart,
-			'active_hours_stop' => $formActiveHoursStop,
-			'active' => $formActive
-		]
-
-	);
-}
-
-add_action('save_ad','save_ad_to_database')
-
-function jal_install() {
->>>>>>> ca7c3ffd34a5ab4227b7871c90d5878f4376e64b
 	global $wpdb;
 	global $jal_db_version;
 
