@@ -67,70 +67,68 @@ function menu_plugin_for_ads_cb(){
 	// 	}
 	// }
 ?>
-	<!DOCTYPE html>
-	<html>
-	<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="form.css">
-	</head>
-	<body>
-		<div class="container">
-			<h2>Add New Advertisement</h2>
-			<form>
-				<input type="hidden" name="form_do_change" value="Y">
-				<div class="row">
-					<div class="col-25">
-						<label for="name">Name:</label>
-					</div>
-					<div class="col-75">
-						<input type="text" id="name" name="name" placeholder="Name of advertisment">
-					</div>
+	<div class="container">
+		<h2>Add New Advertisement</h2>
+		<form>
+			<input type="hidden" name="form_do_change" value="Y">
+			<div class="row">
+				<div class="col-25">
+					<label for="name">Name:</label>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="content">Content:</label>
-					</div>
-					<div class="col-75">
-						<textarea rows="4" cols="50" id="content" name="content" placeholder="Content of advertisment"></textarea>
-					</div>
+				<div class="col-75">
+					<input type="text" id="name" name="name" placeholder="Name of advertisment">
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="time_start">Start date:</label>
-						<input type="date" id="time_start" name="time_start" min="2023-01-03">
-					</div>
-					<div class="col-75">
-						<label for="time_end">End date:</label>
-						<input type="date" id="time_end" name="time_end" min="2023-01-01">
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="content">Content:</label>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="active_hours_start">Start time:</label>
-						<input type="time" id="active_hours_start" name="active_hours_start">
-					</div>
-					<div class="col-75">
-						<label for="active_hours_stop">End time:</label>
-						<input type="time" id="active_hours_stop" name="active_hours_stop">
-					</div>
+				<div class="col-75">
+					<textarea rows="4" cols="50" id="content" name="content" placeholder="Content of advertisment"></textarea>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<input type="radio" id="active" name="active" value="Active" checked>
-						<label for="active">Active</label>
-						<input type="radio" id="inactive" name="active" value="Inactive">
-						<label for="inactive">Inactive</label>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="time_start">Start date:</label>
+					<input type="date" id="time_start" name="time_start" min="2023-01-03">
 				</div>
-				<div class="row">
-					<input type="submit" value="Add">
+				<div class="col-75">
+					<label for="time_end">End date:</label>
+					<input type="date" id="time_end" name="time_end" min="2023-01-01">
 				</div>
-			</form>
-		</div>
-	</body>
-	</html>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="active_hours_start">Start time:</label>
+					<input type="time" id="active_hours_start" name="active_hours_start">
+				</div>
+				<div class="col-75">
+					<label for="active_hours_stop">End time:</label>
+					<input type="time" id="active_hours_stop" name="active_hours_stop">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<input type="radio" id="active" name="active" value="Active" checked>
+					<label for="active">Active</label>
+					<input type="radio" id="inactive" name="active" value="Inactive">
+					<label for="inactive">Inactive</label>
+				</div>
+			</div>
+			<div class="row">
+				<input type="submit" value="Add">
+			</div>
+		</form>
+	</div>
 <?php
 }
+
+function ad_register_styles(){
+	wp_register_style('form_styles', plugins_url('/css/form.css',__FILE__));
+	wp_enqueue_style('form_styles');
+}
+
+add_action('init','ad_register_styles');
 
 function jal_install() {
 	global $wpdb;
