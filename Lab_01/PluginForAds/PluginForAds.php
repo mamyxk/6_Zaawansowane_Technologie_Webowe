@@ -24,9 +24,17 @@ function add_content_to_post($content)
 	return $content;
 }
 
-function get_random_ad()
-{
-	return "<div>Tekst 123</div>";
+function get_random_ad(){
+	$res = '';
+    global $wpdb;
+    $table_name = $wpdb->prefix . "ad_plugin";
+    $all_adver = $wpdb->get_results( "SELECT * FROM $table_name Where " );
+	if(count($all_adver)>0){
+		$rand_index = array_rand($all_adver, 1);
+		$rand_ad = $all_adver[$rand_index];
+		$res = '<div class="advertisment"><p>'.$rand_ad->content.'</p></div>';
+	}
+    return $res;
 }
 
 // Add plugin admin page 
