@@ -56,10 +56,14 @@ function add_mod_advertisment_form()
 	$val_start_time = '';
 	$val_end_time = '';
 	$val_is_active = '';
+	$form_type = '<input type="hidden" name="action" value="add_mod_advertisment" />
+	<input type="hidden" name="action_type" value="add" />
+	<input type="submit" name="add_new_advertisment" value="Add">';
 	if (isset($_POST['mod_del_id'])) {
 		global $wpdb;
 		$table_name = $wpdb->prefix . "ad_plugin";
-		$advert = $wpdb->get_results("SELECT * FROM $table_name WHERE ID = " . $_POST['mod_del_id'] . ";")[0];
+		$mod_id = $_POST['mod_del_id'];
+		$advert = $wpdb->get_results("SELECT * FROM $table_name WHERE ID = " . $mod_id  . ";")[0];
 		$val_name = $advert->name;
 		$val_content = $advert->content;
 		$val_start_date = $advert->time_start;
@@ -67,7 +71,14 @@ function add_mod_advertisment_form()
 		$val_start_time = $advert->active_hours_start;
 		$val_end_time = $advert->active_hours_stop;
 		$val_is_active = $advert->active;
+
+		$form_type = '<input type="hidden" name="action" value="add_mod_advertisment" />
+	<input type="hidden" name="action_type" value="mod" />
+	<input type="hidden name="mod_id" value="'.$mod_id.'">
+	<input type="submit" name="mod_advertisment" value="Edit">';
 	}
+
+
 
 	$res = '';
 
@@ -119,10 +130,8 @@ function add_mod_advertisment_form()
 					<label for="inactive">Inactive</label>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row">' . $form_type . '
 				
-				<input type="hidden" name="action" value="add_mod_advertisment" />
-				<input type="submit" name="add_new_advertisment" value="Add">
 			</div>
 		</form>
 	</div>';
@@ -173,6 +182,37 @@ function hadnle_add_mod_advertisment()
 		);
 		// wp_redirect($_SERVER['HTTP_REFERER']);
 		// exit;
+	}
+
+	if (isset($_POST['mod_advertisment'])) {
+		$formName = $_POST['name'];
+		$formContent = $_POST['content'];
+		$formTimeStart = $_POST['time_start'];
+		$formTimeEnd = $_POST['time_end'];
+		$formActiveHoursStart = $_POST['active_hours_start'];
+		$formActiveHoursStop = $_POST['active_hours_stop'];
+		$mod_id = $_POST['mod_id'];
+		if ($_POST['active']) $formActive = TRUE;
+		else $formActive = FALSE;
+
+		global $wpdb;
+
+		$wpdb->update(
+			$wpdb->prefix . 'ad_plugin',
+			[
+				'name' => $formName,
+				'content' => $formContent,
+				'time_start' => $formTimeStart,
+				'time_end' => $formTimeEnd,
+				'active_hours_start' => $formActiveHoursStart,
+				'active_hours_stop' => $formActiveHoursStop,
+				'active' => $formActive
+			],
+			[
+				'ID' => $mod_id
+			]
+
+		);
 	}
 }
 
