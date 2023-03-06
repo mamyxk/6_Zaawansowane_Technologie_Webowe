@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    color: #dadde0;
+}
+
+p {
+    color: #dadde0;
+}
+
+input[type=text], select, textarea{
+  width: 50%;
+  background-color: #dadde0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: medium;
+  resize: vertical;
+}
+
+input[type=date], input[type=time] {
+  padding: 12px;
+  width: 50%;
+  text-align: center;
+  background-color: #dadde0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label{
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  color: #dadde0;
+}
+
+input[type=submit] {
+  background-color: #2772b3;
+  color: white;
+  width: 100px;
+  padding: 12px 20px;
+  margin-right: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+input[type=submit].add-new-btn{
+  width:200px;
+}
+
+input[type=submit].edit-btn{
+  background-color: #09866d;
+  float: right;
+}
+
+input[type=submit].edit-btn:hover{
+  background-color: #17715f;
+}
+
+input[type=submit].delete-btn{
+  background-color: #a71212;
+  float: right;
+}
+
+input[type=submit].delete-btn:hover{
+  background-color: #8e1111;
+}
+
+input[type=submit]:hover {
+  background-color: #1d5485;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #353c42;
+  padding: 20px;
+  height: 100hv;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .col-25, .col-75, input[type=submit], input[type=text], textarea, input[type=date], input[type=time] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(39, 114, 179, 0.15);
+  border-radius: 1em 1em 0 0;
+  overflow: hidden;
+}
+
+thead tr{
+  background-color: #2772b3;
+  color: #dadde0;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+tbody tr {
+  border-bottom: thin solid #dddddd;
+}
+
+tbody tr:hover {
+  color: #004f98;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #dadde0;
+}
+
+tbody tr:nth-of-type(odd) {
+  background-color: #dadde0df;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 4px solid #2772b3;
+}
