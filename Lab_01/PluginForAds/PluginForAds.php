@@ -18,6 +18,7 @@ add_filter('the_content', 'add_content_to_post');
 function add_content_to_post($content)
 {
 	if (is_main_query() and is_single()) {
+		
 		$content = get_random_ad() . $content;
 	}
 
@@ -28,11 +29,11 @@ function get_random_ad(){
 	$res = '';
     global $wpdb;
     $table_name = $wpdb->prefix . "ad_plugin";
-    $all_adver = $wpdb->get_results( "SELECT * FROM $table_name" );
+    $all_adver = $wpdb->get_results( "SELECT * FROM $table_name;" );
 	if(count($all_adver)>0){
 		$rand_index = array_rand($all_adver, 1);
 		$rand_ad = $all_adver[$rand_index];
-		$res = '<div class="advertisment"><p>'.$rand_ad->content.'</p></div>';
+		$res = '<div><p>'.$rand_ad->content.'</p></div>';
 	}
     return $res;
 }
@@ -64,7 +65,7 @@ function add_mod_advertisment_form()
 	$val_start_time = '';
 	$val_end_time = '';
 	$val_is_active = '';
-	$title_type ='Add New Advertisement'
+	$title_type ='Add New Advertisement';
 	$form_type = '<input type="hidden" name="action" value="add_mod_advertisment" />
 	<input type="hidden" name="action_type" value="add" />
 	<input type="submit" name="add_new_advertisment" value="Add">';
@@ -80,11 +81,11 @@ function add_mod_advertisment_form()
 		$val_start_time = $advert->active_hours_start;
 		$val_end_time = $advert->active_hours_stop;
 		$val_is_active = $advert->active;
-		$title_type ='Edit Advertisment'
+		$title_type ='Edit Advertisment';
 
 		$form_type = '<input type="hidden" name="action" value="add_mod_advertisment" />
 	<input type="hidden" name="action_type" value="mod" />
-	<input type="hidden name="mod_id" value="'.$mod_id.'">
+	<input type="hidden" name="mod_id" value="'.$mod_id.'">
 	<input type="submit" name="mod_advertisment" value="Edit">';
 	}
 
@@ -217,6 +218,7 @@ function hadnle_add_mod_advertisment()
 	}
 
 	if (isset($_POST['mod_advertisment'])) {
+		
 		$formName = $_POST['name'];
 		$formContent = $_POST['content'];
 		$formTimeStart = $_POST['time_start'];
@@ -228,7 +230,7 @@ function hadnle_add_mod_advertisment()
 		else $formActive = FALSE;
 
 		global $wpdb;
-
+		echo $mod_id;
 		$wpdb->update(
 			$wpdb->prefix . 'ad_plugin',
 			[
@@ -241,7 +243,7 @@ function hadnle_add_mod_advertisment()
 				'active' => $formActive
 			],
 			[
-				'ID' => $mod_id
+				'id' => $mod_id
 			]
 
 		);
