@@ -29,7 +29,10 @@ function get_random_ad(){
 	$res = '';
     global $wpdb;
     $table_name = $wpdb->prefix . "ad_plugin";
-    $all_adver = $wpdb->get_results( "SELECT * FROM $table_name;" );
+    $all_adver = $wpdb->get_results( "SELECT * FROM $table_name 
+	WHERE active = true 
+	AND current_time BETWEEN active_hours_start AND active_hours_stop 
+	AND current_date BETWEEN time_start AND time_end" );
 	if(count($all_adver)>0){
 		$rand_index = array_rand($all_adver, 1);
 		$rand_ad = $all_adver[$rand_index];
@@ -65,6 +68,8 @@ function add_mod_advertisment_form()
 	$val_start_time = '';
 	$val_end_time = '';
 	$val_is_active = '';
+	$val_active_checked = 'checked';
+	$val_inactive_checked = '';
 	$title_type ='Add New Advertisement';
 	$form_type = '<input type="hidden" name="action" value="add_mod_advertisment" />
 	<input type="hidden" name="action_type" value="add" />
@@ -81,6 +86,10 @@ function add_mod_advertisment_form()
 		$val_start_time = $advert->active_hours_start;
 		$val_end_time = $advert->active_hours_stop;
 		$val_is_active = $advert->active;
+		if(!$val_is_active){
+			$val_inactive_checked = 'checked';
+			$val_active_checked = '';
+		}
 		$title_type ='Edit Advertisment';
 
 		$form_type = '<input type="hidden" name="action" value="add_mod_advertisment" />
@@ -157,9 +166,9 @@ function add_mod_advertisment_form()
 				
 				</div>
 				<div class="col-75">
-					<input type="radio" id="active" name="active" value="Active" checked>
+					<input type="radio" id="active" name="active" value="Active" '.$val_active_checked.'>
 					<label for="active">Active</label>
-					<input type="radio" id="inactive" name="active" value="Inactive">
+					<input type="radio" id="inactive" name="active" value="Inactive" '.$val_inactive_checked.'>
 					<label for="inactive">Inactive</label>
 				</div>
 			</div>
@@ -195,7 +204,7 @@ function hadnle_add_mod_advertisment()
 		$formTimeEnd = $_POST['time_end'];
 		$formActiveHoursStart = $_POST['active_hours_start'];
 		$formActiveHoursStop = $_POST['active_hours_stop'];
-		if ($_POST['active']) $formActive = TRUE;
+		if ($_POST['active'] == 'Active') $formActive = TRUE;
 		else $formActive = FALSE;
 
 		global $wpdb;
@@ -226,7 +235,7 @@ function hadnle_add_mod_advertisment()
 		$formActiveHoursStart = $_POST['active_hours_start'];
 		$formActiveHoursStop = $_POST['active_hours_stop'];
 		$mod_id = $_POST['mod_id'];
-		if ($_POST['active']) $formActive = TRUE;
+		if ($_POST['active'] == 'Active') $formActive = TRUE;
 		else $formActive = FALSE;
 
 		global $wpdb;
