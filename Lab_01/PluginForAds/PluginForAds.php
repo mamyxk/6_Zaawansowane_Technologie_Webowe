@@ -7,9 +7,6 @@
 // register_activation_hook(__FILE__,'plugin_activate');
 // register_deactivation_hook( __FILE__, 'plugin_deactivate' );
 
-global $jal_db_version;
-$jal_db_version = '1.0';
-
 register_activation_hook(__FILE__, 'jal_install');
 
 
@@ -18,27 +15,28 @@ add_filter('the_content', 'add_content_to_post');
 function add_content_to_post($content)
 {
 	if (is_main_query() and is_single()) {
-		
+
 		$content = get_random_ad() . $content;
 	}
 
 	return $content;
 }
 
-function get_random_ad(){
+function get_random_ad()
+{
 	$res = '';
-    global $wpdb;
-    $table_name = $wpdb->prefix . "ad_plugin";
-    $all_adver = $wpdb->get_results( "SELECT * FROM $table_name 
+	global $wpdb;
+	$table_name = $wpdb->prefix . "ad_plugin";
+	$all_adver = $wpdb->get_results("SELECT * FROM $table_name 
 	WHERE active = true 
 	AND current_time BETWEEN active_hours_start AND active_hours_stop 
-	AND current_date BETWEEN time_start AND time_end" );
-	if(count($all_adver)>0){
+	AND current_date BETWEEN time_start AND time_end");
+	if (count($all_adver) > 0) {
 		$rand_index = array_rand($all_adver, 1);
 		$rand_ad = $all_adver[$rand_index];
-		$res = '<div><p>'.$rand_ad->content.'</p></div>';
+		$res = '<div><p>' . $rand_ad->content . '</p></div>';
 	}
-    return $res;
+	return $res;
 }
 
 // Add plugin admin page 
@@ -55,7 +53,6 @@ function navigation_view()
 	<input type="hidden" name="page" value="menu_plugin_for_ads" /> 
 	<input type="submit" name="add_mod" value="Add new advertisment"/>	
 			</form>';
-	// $res = '<a ></a>';
 	return $res;
 }
 
@@ -70,7 +67,7 @@ function add_mod_advertisment_form()
 	$val_is_active = '';
 	$val_active_checked = 'checked';
 	$val_inactive_checked = '';
-	$title_type ='Add New Advertisement';
+	$title_type = 'Add New Advertisement';
 	$form_type = '<input type="hidden" name="action" value="add_mod_advertisment" />
 	<input type="hidden" name="action_type" value="add" />
 	<input type="submit" name="add_new_advertisment" value="Add">';
@@ -86,15 +83,15 @@ function add_mod_advertisment_form()
 		$val_start_time = $advert->active_hours_start;
 		$val_end_time = $advert->active_hours_stop;
 		$val_is_active = $advert->active;
-		if(!$val_is_active){
+		if (!$val_is_active) {
 			$val_inactive_checked = 'checked';
 			$val_active_checked = '';
 		}
-		$title_type ='Edit Advertisment';
+		$title_type = 'Edit Advertisment';
 
 		$form_type = '<input type="hidden" name="action" value="add_mod_advertisment" />
 	<input type="hidden" name="action_type" value="mod" />
-	<input type="hidden" name="mod_id" value="'.$mod_id.'">
+	<input type="hidden" name="mod_id" value="' . $mod_id . '">
 	<input type="submit" name="mod_advertisment" value="Edit">';
 	}
 
@@ -110,7 +107,7 @@ function add_mod_advertisment_form()
 				<input type="submit" class="back-button" name="back_btn" value="&laquo;  Back"/>
 			</form>
 		</div>
-		<h2>'. $title_type .'</h2>
+		<h2>' . $title_type . '</h2>
 		<form method="post">
 			<input type="hidden" name="form_do_change" value="Y">
 			<div class="row">
@@ -166,9 +163,9 @@ function add_mod_advertisment_form()
 				
 				</div>
 				<div class="col-75">
-					<input type="radio" id="active" name="active" value="Active" '.$val_active_checked.'>
+					<input type="radio" id="active" name="active" value="Active" ' . $val_active_checked . '>
 					<label for="active">Active</label>
-					<input type="radio" id="inactive" name="active" value="Inactive" '.$val_inactive_checked.'>
+					<input type="radio" id="inactive" name="active" value="Inactive" ' . $val_inactive_checked . '>
 					<label for="inactive">Inactive</label>
 				</div>
 			</div>
@@ -189,14 +186,6 @@ function hadnle_add_mod_advertisment()
 	global $_POST;
 
 	if (isset($_POST['add_new_advertisment'])) {
-		// $name = $_POST['name'];
-		// $content = $_POST['content'];
-		// $time_start = $_POST['time_start'];
-		// $time_end = $_POST['time_end'];
-		// $active_hours_start = $_POST['active_hours_start'];
-		// $active_hours_stop = $_POST['active_hours_stop'];
-		// $active = $_POST['active'];
-		// echo $name.' '.$content.' '.$time_start.' '.$time_end.' '.$active_hours_start.' '.$active_hours_stop.' '.$active.' ';
 
 		$formName = $_POST['name'];
 		$formContent = $_POST['content'];
@@ -222,12 +211,10 @@ function hadnle_add_mod_advertisment()
 			]
 
 		);
-		// wp_redirect($_SERVER['HTTP_REFERER']);
-		// exit;
 	}
 
 	if (isset($_POST['mod_advertisment'])) {
-		
+
 		$formName = $_POST['name'];
 		$formContent = $_POST['content'];
 		$formTimeStart = $_POST['time_start'];
@@ -264,9 +251,6 @@ function render_list_of_advertisments()
 	global $wpdb;
 	$table_name = $wpdb->prefix . "ad_plugin";
 	$all_adver = $wpdb->get_results("SELECT * FROM $table_name");
-	// if(isset($_POST['mod_del_id'])){
-	// 	echo $_POST['mod_del_id'];
-	// }
 	echo '
 	<div class="container">
 		<div class="row">
@@ -323,15 +307,8 @@ function delete_advertisment($id)
 function menu_plugin_for_ads_cb()
 {
 	global $_POST;
-	global $_SESSION;
 
 	hadnle_add_mod_advertisment();
-
-	// 0/null - view list of ads
-	// 1 - add new ad
-	// 2 - edit ad with id in $_POST
-
-	// echo navigation_view();
 
 	if (isset($_POST['add']) or isset($_POST['edit'])) {
 		echo add_mod_advertisment_form();
@@ -354,7 +331,6 @@ add_action('init', 'ad_register_styles');
 function jal_install()
 {
 	global $wpdb;
-	global $jal_db_version;
 
 	$table_name = $wpdb->prefix . 'ad_plugin';
 
@@ -374,19 +350,4 @@ function jal_install()
 
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	dbDelta($sql);
-
-	// add_option( 'jal_db_version', $jal_db_version );
 }
-
-
-// function run_query($sql){
-// 	global $wpdb;
-// 	global $jal_db_version;
-
-// 	$table_name = $wpdb->prefix . 'ad_plugin';
-
-// 	$charset_collate = $wpdb->get_charset_collate();
-
-// 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-// 	dbDelta($sql);
-// }
