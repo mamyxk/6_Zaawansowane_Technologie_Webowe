@@ -1,0 +1,7 @@
+@use 'components' as *;
+@use 'helpers' as *;
+@use 'base' as *;
+
+body{
+  background-color: $background-color;
+}

@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+.navbar__logo, .navbar__menu, .navbar__menu--links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  background: #172026;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem calc((100vw - 1200px) / 2);
+  z-index: 10;
+  position: relative;
+}
+.navbar__logo {
+  color: #5FCDD9;
+  background: linear-gradient(to right, #027373, #5FCDD9);
+  background-clip: linear-gradient(to right, #027373, #5FCDD9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-left: 24px;
+}
+.navbar__menu {
+  list-style: none;
+  text-align: center;
+  margin-right: 24px;
+}
+@media screen and (max-width: 768px) {
+  .navbar__menu {
+    display: none;
+  }
+}
+.navbar__menu--links {
+  color: #5FCDD9;
+  justify-content: center;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+.navbar__menu--links:hover {
+  color: #EEEEEE;
+  transition: all 0.3s ease;
+}
+.navbar__menu #button {
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: #5FCDD9;
+  margin-left: 16px;
+  color: #172026;
+}
+.navbar__menu #button:hover {
+  background: #EEEEEE;
+  transition: all 0.3s ease;
+}
+
+.hero {
+  background-color: #172026;
+}
+.hero__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  margin: 0 auto;
+  height: 90vh;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+@media screen and (max-width: 768px) {
+  .hero__container {
+    grid-template-columns: 1fr;
+    height: 100%;
+  }
+}
+.hero__container--left {
+  width: 100%;
+  line-height: 1.2;
+}
+@media screen and (max-width: 768px) {
+  .hero__container--left {
+    padding: 5rem 0;
+  }
+}
+@media screen and (max-width: 280px) {
+  .hero__container--left {
+    line-height: 1.5;
+  }
+}
+.hero__container--left h1 {
+  font-size: 4rem;
+  color: #5FCDD9;
+}
+@media screen and (max-width: 280px) {
+  .hero__container--left h1 {
+    font-size: 1.5rem;
+  }
+}
+.hero__container--left h2 {
+  font-size: 4rem;
+  color: #EEEEEE;
+}
+@media screen and (max-width: 280px) {
+  .hero__container--left h2 {
+    font-size: 2rem;
+  }
+}
+.hero__container--left p {
+  font-size: 2rem;
+  color: #5FCDD9;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+@media screen and (max-width: 280px) {
+  .hero__container--left p {
+    font-size: 1.5rem;
+  }
+}
+.hero__container--btn {
+  font-size: 1rem;
+  background-color: #5FCDD9;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 4px;
+  color: #172026;
+  margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+  outline: none;
+}
+.hero__container--btn a {
+  position: relative;
+  z-index: 2;
+  color: #172026;
+  text-decoration: none;
+}
+.hero__container--btn:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #EEEEEE;
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+.hero__container--btn:hover:after {
+  width: 100%;
+}
+.hero__container--right {
+  text-align: center;
+}
+.hero__container--img {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
+  font-family: "Poppins";
+}
+
+body {
+  background-color: #172026;
+}/*# sourceMappingURL=main.css.map */
