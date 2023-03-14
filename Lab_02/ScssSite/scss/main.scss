@@ -1,7 +1,3 @@
-@use 'components' as *;
-@use 'helpers' as *;
-@use 'base' as *;
-
-body{
-  background-color: $background-color;
-}
+@use 'components';
+@use 'base';
+@use 'pages';

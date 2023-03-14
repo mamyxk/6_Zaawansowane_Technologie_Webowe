@@ -1,7 +1,7 @@
 @use '../helpers' as *;
 
 .navbar {
-  background: $background-color;
+  background: $black;
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -9,10 +9,10 @@
   z-index: 10;
   position: relative;
 
-  &__logo {
-    color: $element-color;
-    background: linear-gradient(to right, $blue-green, $element-color);
-    background-clip: linear-gradient(to right, $blue-green, $element-color);
+  .logo {
+    color: $blue;
+    background: linear-gradient(to right, $blue-green, $blue);
+    background-clip: linear-gradient(to right, $blue-green, $blue);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     pointer-events: none;
@@ -22,11 +22,11 @@
     @extend %align-center;
   }
 
-  &__menu {
+  & &-menu {
     @extend %align-center;
     list-style: none;
     text-align: center;
-    margin-right: 24px;
+    transition: all 0.3s;
 
     @include tablet {
       opacity: 0;
@@ -40,8 +40,8 @@
       top: 100%;
       flex-direction: column;
       margin-right:-100%;
-
-      &--links{
+      
+      &-links{
         display: block;
           font-size: larger;
           text-align: center;
@@ -56,40 +56,35 @@
         margin-right: 0%;
         border-top: 3px $blue-green solid;
         border-bottom: 3px $blue-green solid;
-        background:$background-color;
+        background:$black;
       }
     }
 
-    &--links {
-      color: $element-color;
+    &-links {
+      color: $blue;
       @extend %align-center;
       justify-content: center;
       text-decoration: none;
       padding: 0 1rem;
 
       &:hover {
-        color: $font-color;
-        transition: all 0.3s ease;
+        color: $white;
+        transition: all 0.3s;
       }
     }
 
     #button {
-      padding: 12px 24px;
+      @extend %buttons;
       border: none;
-      outline: none;
-      border-radius: 4px;
-      background: $element-color;
       margin-left: 16px;
-      color: $background-color;
 
       &:hover {
-        background: $font-color;
-        transition: all 0.3s ease;
+        background: $blue;
       }
     }
   }
 
-  &__mobile{
+  & &-mobile{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,8 +102,8 @@
     }
     &:hover, &.active{
       span{
-        background: $element-color;
-        transition: all 0.3s ease;
+        background: $blue;
+        transition: all 0.3s;
       }
     }
   }
