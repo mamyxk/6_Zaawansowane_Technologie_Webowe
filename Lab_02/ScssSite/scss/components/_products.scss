@@ -1,0 +1,21 @@
+@use '../helpers' as *;
+
+.products {
+    background-color: $background-color;
+
+    &__container {
+        margin-top: 80px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        align-items: center;
+        justify-items: center;
+    }
+
+    &__item {
+        background-color: red;
+        border-radius: 2px;
+        min-width: 400px;
+        min-height: 100px;
+        margin-top: 30px;
+    }
+}
