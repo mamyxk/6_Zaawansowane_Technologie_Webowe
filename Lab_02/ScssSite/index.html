@@ -11,12 +11,17 @@
 <header>
   <nav class="navbar">
     <a class="navbar__logo">&#9730 UMBRELLA</a>
-    <div class="navbar__menu">
+    <div id="menu" class="navbar__menu">
       <a href="/" class="navbar__menu--links">Home</a>
       <a href="products.html" class="navbar__menu--links">Products</a>
       <a href="about.html" class="navbar__menu--links">About Us</a>
       <a href="contact.html" class="navbar__menu--links">Contact</a>
       <a href="/" class="navbar__menu--links" id="button">Log In</a>
+    </div>
+    <div id="mobile" class="navbar__mobile" onclick="toggleMobileMenu();">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </nav>
   <script src="js/main.js"></script>
@@ -33,7 +38,7 @@
       <div class="hero__container--right">
         <img
           src="images/umbrella.png"
-          alt="alien"
+          alt="umbrella"
           class="hero__container--img"
         />
       </div>
