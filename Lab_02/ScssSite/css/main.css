@@ -305,6 +305,25 @@
 .products__item-3__text {
   padding-left: 5%;
 }
+.products__item-4 {
+  margin-left: 10%;
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  margin-right: 10%;
+  padding: 16px;
+  background: linear-gradient(to right, #5FCDD9, #04BF9D);
+}
+.products__item-4__img {
+  max-width: 100px;
+  max-height: 100px;
+}
+.products__item-4__text {
+  padding-left: 5%;
+}
 
 .contact-info h3 {
   color: #172026;
