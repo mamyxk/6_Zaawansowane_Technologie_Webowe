@@ -10,16 +10,12 @@
   position: relative;
 
   .logo {
-    color: $blue;
-    background: linear-gradient(to right, $blue-green, $blue);
-    background-clip: linear-gradient(to right, $blue-green, $blue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @include gradient-text($blue-green, $blue);
+    @extend %align-center;
     pointer-events: none;
     text-decoration: none;
     font-size: 2rem;
-    margin-left: 24px;
-    @extend %align-center;
+    margin-left: $margin-navbar-ends;
   }
 
   & &-menu {
@@ -43,12 +39,12 @@
       
       &-links{
         display: block;
-          font-size: larger;
-          text-align: center;
-          margin-top: 14px;
-          margin-bottom: 10px;
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 14px;
+        margin-bottom: 10px;
       }
-      
+
       &.active{
         opacity: 1;
         max-height: 500px;
@@ -66,17 +62,22 @@
       justify-content: center;
       text-decoration: none;
       padding: 0 1rem;
+    }
 
-      &:hover {
-        color: $white;
-        transition: all 0.3s;
-      }
+    &-links:hover {
+      color: $white;
+      transition: all 0.3s;
+    }
+
+    &-links.active{
+      color: $white;
     }
 
     #button {
       @extend %buttons;
       border: none;
-      margin-left: 16px;
+      margin-left: 30px;
+      margin-right: $margin-navbar-ends;
 
       &:hover {
         background: $blue;
@@ -85,9 +86,8 @@
   }
 
   & &-mobile{
-    display: flex;
+    @extend %align-center;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
     display: none;
     @include tablet{
@@ -98,6 +98,7 @@
       height: 4px;
       width:40px;
       margin: 4px;
+      margin-right: $margin-navbar-ends;
       background: $blue-green;
     }
     &:hover, &.active{

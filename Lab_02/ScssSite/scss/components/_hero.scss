@@ -13,8 +13,8 @@
       z-index: 1;
       width: 100%;
       max-width: 1200px;
-      padding-right: 24px;
-      padding-left: 24px;
+      padding-right: $padding-hero;
+      padding-left: $padding-hero;
   
       @include tablet {
         grid-template-columns: 1fr;

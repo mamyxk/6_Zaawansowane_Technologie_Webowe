@@ -11,10 +11,6 @@
   font-size: 1.5rem;
   line-height: 1;
   margin-bottom: 0.7rem;
-
-  @include mobile{
-    font-size: 1.15rem;
-  }
 }
 
 %input-contact{
@@ -44,4 +40,8 @@
   cursor: pointer;
   transition: all 0.3s;
   outline: none;
+}
+
+%a-links{
+  text-decoration: none;
 }

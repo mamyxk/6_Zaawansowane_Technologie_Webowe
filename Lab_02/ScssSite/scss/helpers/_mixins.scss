@@ -3,9 +3,24 @@
       @content;
     }
   }
-  
+
 @mixin mobile {
   @media screen and (max-width: 500px) {
     @content;
+  }
+}
+
+@mixin gradient-text($first-color, $second-color){
+  background: linear-gradient(to right, $first-color, $second-color);
+  background-clip: linear-gradient(to right, $first-color, $second-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin title-contact($color){
+  @extend %title-contact;
+  color: $color;
+  @include mobile{
+    font-size: 1.15rem;
   }
 }

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
-.container, .contact-info .info-link, .navbar .logo, .navbar .navbar-menu, .navbar .navbar-menu-links {
+.container, .contact-info .info-link, .navbar .logo, .navbar .navbar-menu, .navbar .navbar-menu-links, .navbar .navbar-mobile {
   display: flex;
   align-items: center;
 }
@@ -9,11 +9,6 @@
   font-size: 1.5rem;
   line-height: 1;
   margin-bottom: 0.7rem;
-}
-@media screen and (max-width: 500px) {
-  .contact-info h3, .contact-form h3 {
-    font-size: 1.15rem;
-  }
 }
 
 .contact-form .form-input input, .contact-form .form-input textarea {
@@ -56,7 +51,6 @@
   position: relative;
 }
 .navbar .logo {
-  color: #5FCDD9;
   background: linear-gradient(to right, #027373, #5FCDD9);
   background-clip: linear-gradient(to right, #027373, #5FCDD9);
   -webkit-background-clip: text;
@@ -87,7 +81,7 @@
   }
   .navbar .navbar-menu-links {
     display: block;
-    font-size: larger;
+    font-size: 1.2rem;
     text-align: center;
     margin-top: 14px;
     margin-bottom: 10px;
@@ -112,17 +106,19 @@
   color: #EEEEEE;
   transition: all 0.3s;
 }
+.navbar .navbar-menu-links.active {
+  color: #EEEEEE;
+}
 .navbar .navbar-menu #button {
   border: none;
-  margin-left: 16px;
+  margin-left: 30px;
+  margin-right: 24px;
 }
 .navbar .navbar-menu #button:hover {
   background: #5FCDD9;
 }
 .navbar .navbar-mobile {
-  display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
   display: none;
 }
@@ -136,6 +132,7 @@
   height: 4px;
   width: 40px;
   margin: 4px;
+  margin-right: 24px;
   background: #027373;
 }
 .navbar .navbar-mobile:hover span, .navbar .navbar-mobile.active span {
@@ -244,6 +241,11 @@
 .contact-info h3 {
   color: #172026;
 }
+@media screen and (max-width: 500px) {
+  .contact-info h3 {
+    font-size: 1.15rem;
+  }
+}
 .contact-info .text {
   color: #172026;
   margin: 1.5rem 0 2rem 0;
@@ -272,6 +274,10 @@
   cursor: pointer;
   text-decoration: none;
   color: #172026;
+  transition: all 0.3s;
+}
+.contact-info .info-link a:hover {
+  color: #027373;
 }
 .contact-info .info-link .icon {
   width: 28px;
@@ -311,7 +317,7 @@
   text-align: center;
   line-height: 35px;
   margin-right: 0.5rem;
-  transition: 0.3s;
+  transition: all 0.3s;
 }
 @media screen and (max-width: 500px) {
   .contact-info .links .social-icons a {
@@ -332,6 +338,11 @@
 }
 .contact-form h3 {
   color: #EEEEEE;
+}
+@media screen and (max-width: 500px) {
+  .contact-form h3 {
+    font-size: 1.15rem;
+  }
 }
 .contact-form .form-input {
   position: relative;
