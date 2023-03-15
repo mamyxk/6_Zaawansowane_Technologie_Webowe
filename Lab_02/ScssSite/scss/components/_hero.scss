@@ -1,9 +1,9 @@
 @use '../helpers' as *;
 
 .hero {
-    background-color: $background-color;
+    background-color: $black;
   
-    &__container {
+    &-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
@@ -13,15 +13,15 @@
       z-index: 1;
       width: 100%;
       max-width: 1200px;
-      padding-right: 24px;
-      padding-left: 24px;
+      padding-right: $padding-hero;
+      padding-left: $padding-hero;
   
       @include tablet {
         grid-template-columns: 1fr;
         height: 100%;
       }
   
-      &--left {
+      &-left {
         width: 100%;
         line-height: 1.2;
   
@@ -34,27 +34,27 @@
         }
       }
   
-      &--left h1 {
+      &-left h1 {
         font-size: 4rem;
-        color: $element-color;
+        color: $blue;
   
         @include mobile {
           font-size: 1.5rem;
         }
       }
   
-      &--left h2 {
+      &-left h2 {
         font-size: 4rem;
-        color: $font-color;
+        color: $white;
   
         @include mobile {
           font-size: 2rem;
         }
       }
   
-      &--left p {
+      &-left p {
         font-size: 2rem;
-        color: $element-color;
+        color: $blue;
         margin-top: 1rem;
         font-weight: 700;
   
@@ -63,48 +63,41 @@
         }
       }
   
-      &--btn {
-        font-size: 1rem;
-        background-color: $element-color;
-        padding: 14px 32px;
-        border: none;
-        border-radius: 4px;
-        color: $background-color;
-        margin-top: 2rem;
-        cursor: pointer;
+      &-btn {
+        @extend %buttons;
         position: relative;
-        transition: all 0.3s;
-        outline: none;
+        border: none;
+        margin-top: 2rem;
       }
   
-      &--btn a {
+      &-btn a {
         position: relative;
         z-index: 2;
-        color: $background-color;
+        color: $black;
         text-decoration: none;
       }
   
-      &--btn:after {
+      &-btn:after {
         position: absolute;
         content: '';
         top: 0;
         left: 0;
         width: 0;
         height: 100%;
-        background: $font-color;
+        background: $blue;
         transition: all 0.3s;
-        border-radius: 4px;
+        border-radius: 5px;
       }
   
-      &--btn:hover:after {
+      &-btn:hover:after {
         width: 100%;
       }
   
-      &--right {
+      &-right {
         text-align: center;
       }
   
-      &--img {
+      &-img {
         height: 100%;
         width: 100%;
       }

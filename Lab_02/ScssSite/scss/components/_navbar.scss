@@ -1,7 +1,7 @@
 @use '../helpers' as *;
 
 .navbar {
-  background: $background-color;
+  background: $black;
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -9,24 +9,20 @@
   z-index: 10;
   position: relative;
 
-  &__logo {
-    color: $element-color;
-    background: linear-gradient(to right, $blue-green, $element-color);
-    background-clip: linear-gradient(to right, $blue-green, $element-color);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .logo {
+    @include gradient-text($blue-green, $blue);
+    @extend %align-center;
     pointer-events: none;
     text-decoration: none;
     font-size: 2rem;
-    margin-left: 24px;
-    @extend %align-center;
+    margin-left: $margin-navbar-ends;
   }
 
-  &__menu {
+  & &-menu {
     @extend %align-center;
     list-style: none;
     text-align: center;
-    margin-right: 24px;
+    transition: all 0.3s;
 
     @include tablet {
       opacity: 0;
@@ -40,15 +36,15 @@
       top: 100%;
       flex-direction: column;
       margin-right:-100%;
-
-      &--links{
-        display: block;
-          font-size: larger;
-          text-align: center;
-          margin-top: 14px;
-          margin-bottom: 10px;
-      }
       
+      &-links{
+        display: block;
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 14px;
+        margin-bottom: 10px;
+      }
+
       &.active{
         opacity: 1;
         max-height: 500px;
@@ -56,43 +52,42 @@
         margin-right: 0%;
         border-top: 3px $blue-green solid;
         border-bottom: 3px $blue-green solid;
-        background:$background-color;
+        background:$black;
       }
     }
 
-    &--links {
-      color: $element-color;
+    &-links {
+      color: $blue;
       @extend %align-center;
       justify-content: center;
       text-decoration: none;
       padding: 0 1rem;
+    }
 
-      &:hover {
-        color: $font-color;
-        transition: all 0.3s ease;
-      }
+    &-links:hover {
+      color: $white;
+      transition: all 0.3s;
+    }
+
+    &-links.active{
+      color: $white;
     }
 
     #button {
-      padding: 12px 24px;
+      @extend %buttons;
       border: none;
-      outline: none;
-      border-radius: 4px;
-      background: $element-color;
-      margin-left: 16px;
-      color: $background-color;
+      margin-left: 30px;
+      margin-right: $margin-navbar-ends;
 
       &:hover {
-        background: $font-color;
-        transition: all 0.3s ease;
+        background: $blue;
       }
     }
   }
 
-  &__mobile{
-    display: flex;
+  & &-mobile{
+    @extend %align-center;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
     display: none;
     @include tablet{
@@ -103,12 +98,13 @@
       height: 4px;
       width:40px;
       margin: 4px;
+      margin-right: $margin-navbar-ends;
       background: $blue-green;
     }
     &:hover, &.active{
       span{
-        background: $element-color;
-        transition: all 0.3s ease;
+        background: $blue;
+        transition: all 0.3s;
       }
     }
   }

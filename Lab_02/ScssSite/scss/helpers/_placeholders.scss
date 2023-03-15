@@ -1,4 +1,47 @@
+@use './mixins' as *;
+@use './variables' as *;
+
 %align-center {
     display: flex;
     align-items: center;
   }
+
+%title-contact{
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 0.7rem;
+}
+
+%input-contact{
+  width: 100%;
+  outline: none;
+  border: 2px solid $white;
+  background: none;
+  padding: 0.6rem 1.2rem;
+  color: $white;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  transition: 0.3s;
+
+  @include mobile{
+    padding: 0.45rem 1.2rem;
+  }
+}
+
+%buttons{
+  font-size: 1rem;
+  background-color: $white;
+  padding: 0.6rem 1.3rem;
+  border-radius: $radius-button;
+  color: $black;
+  cursor: pointer;
+  transition: all 0.3s;
+  outline: none;
+}
+
+%a-links{
+  text-decoration: none;
+}

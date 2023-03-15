@@ -1,21 +1,40 @@
 @use '../helpers' as *;
 
+$columns: 3;
+
 .products {
-    background-color: $background-color;
+    background-color: $black;
 
     &__container {
         margin-top: 80px;
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto;
         align-items: center;
-        justify-items: center;
+        justify-items: left;
     }
 
-    &__item {
-        background-color: red;
-        border-radius: 2px;
-        min-width: 400px;
-        min-height: 100px;
-        margin-top: 30px;
+    @for $item_n from 1 through $columns {
+        &__item-#{$item_n} {
+            margin-left: percentage(calc((($item_n*10)) / 100));
+            display: grid;
+            grid-template-columns: auto auto;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            margin-right: 10%;
+            padding: 16px;
+            background:linear-gradient(to right, $blue, blue);
+
+            &__img {
+                max-width: 100px;
+                max-height: 100px;
+            }
+
+            &__text {
+                padding-left: 5%;
+            }
+        }
     }
+
 }

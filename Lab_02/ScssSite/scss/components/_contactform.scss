@@ -1,0 +1,140 @@
+@use '../helpers/' as *;
+
+
+.contact-info{
+    h3{
+      @include title-contact($black);
+    }
+
+    .text {
+        color: $black;
+        margin: 1.5rem 0 2rem 0;
+
+        @include tablet{
+          margin: 1rem 0 1.5rem 0;
+        }
+
+        @include mobile{
+          font-size: 0.8rem;
+        }
+    }
+
+    .info-link {
+        @extend %align-center;
+        color: $black;
+        margin: 0.7rem 0;
+        font-size: 0.95rem;
+
+        @include mobile{
+          font-size: 0.8rem;  
+        }
+        
+        a, a:visited{
+          cursor: pointer;
+          text-decoration: none;
+          color: $black;
+          transition: all 0.3s;
+        }
+        
+        a:hover{
+          color: $blue-green;
+        }
+
+        .icon {
+            width: 28px;
+            margin-right: 0.7rem;
+
+            @include mobile{
+              width: 23px;
+            }
+        }
+    }
+
+    .links{
+        padding: 2rem 0 0 0;
+
+        @include tablet{
+          padding: 1.5rem 0 0 0;
+        }
+
+         p {
+            color: $black;
+
+            @include mobile{
+              font-size: 0.8rem;
+            }
+          }
+
+          .social-icons {
+            display: flex;
+            margin-top: 0.5rem;
+          }
+
+          .social-icons a {
+            width: 35px;
+            height: 35px;
+            border-radius: $radius-button;
+            background: linear-gradient(45deg, $black, $gray);
+            color: $white;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 0.5rem;
+            transition: all 0.3s;
+
+            @include mobile{
+              width: 30px;
+              height: 30px;
+              line-height: 30px;
+            }
+          }
+          
+          .social-icons a:hover {
+            transform: scale(1.15);
+          }
+    }
+}
+
+.contact-form{
+    form{
+        padding: 2.3rem 2.2rem;
+        z-index: 10;
+        overflow: hidden;
+        position: relative;
+    }
+
+    h3{
+        @include title-contact($white);
+    }
+
+    .form-input{
+        position: relative;
+        margin: 1rem 0;
+
+        input{
+            @extend %input-contact;
+        }
+
+        textarea {
+            @extend %input-contact;
+            min-height: 150px;
+            resize: none;
+            overflow-y: auto;
+          }
+    }
+
+    .btn {
+        @extend %buttons;
+        border: 2px solid $white;
+        line-height: 1;
+        margin: 0;
+
+        @include mobile{
+          padding: 0.45rem 1.2rem;
+        }
+      }
+      
+      .btn:hover {
+        background-color: $black;
+        color: $white;
+      }
+}

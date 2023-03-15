@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <header>
   <nav class="navbar">
-    <a class="navbar__logo">&#9730 UMBRELLA</a>
-    <div class="navbar__menu">
-      <a href="index.html" class="navbar__menu--links">Home</a>
-      <a href="products.html" class="navbar__menu--links">Products</a>
-      <a href="about.html" class="navbar__menu--links">About Us</a>
-      <a href="contact.html" class="navbar__menu--links">Contact</a>
-      <a href="/" class="navbar__menu--links" id="button">Log In</a>
+    <a class="logo">&#9730 UMBRELLA</a>
+    <div class="navbar-menu" id="menu">
+      <a href="index.html" class="navbar-menu-links">Home</a>
+      <a href="products.html" class="navbar-menu-links active">Products</a>
+      <a href="/" class="navbar-menu-links">About Us</a>
+      <a href="contact.html" class="navbar-menu-links">Contact</a>
+      <a href="/" class="navbar-menu-links" id="button">Log In</a>
+    </div>
+    <div id="mobile" class="navbar-mobile" onclick="toggleMobileMenu();">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </nav>
   <script src="js/main.js"></script>
 </header>
+
 <body>
   <div class="products">
     <div class="products__container">
-    <div class="products__item" id="prod1">Prod1</div>
-    <div class="products__item" id="prod2">Prod2</div>
-    <div class="products__item" id="prod3">Prod3</div>
-    <div class="products__item" id="prod4">Prod4</div>
-    <div class="products__item" id="prod5">Prod5</div>
-    <div class="products__item" id="prod6">Prod6</div>
-  </div>
+      <div class="products__item-1" id="prod1">
+        <div class="products__item-1__img"><img src="images/umb_blue.png" width="100" height="100"></div>
+        <div class="products__item-1__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum mauris porttitor arcu blandit varius. Praesent maximus, dui et tincidunt tempus, lacus sapien bibendum urna, eu iaculis nulla dolor a sapien. In nec enim eu velit iaculis congue sit amet vestibulum nibh. Fusce non vehicula purus. Ut bibendum odio libero, vel mattis tortor gravida id. Aenean metus nisi, tincidunt ac nulla ac, consequat suscipit augue. Aenean eget enim nec leo euismod bibendum placerat sit amet purus. Pellentesque at luctus metus, ac accumsan neque. Duis ac sodales lectus. Ut sit amet mi eros. </div>
+      </div>
+
+      <div class="products__item-2" id="prod3">
+        <div class="products__item-2__img"><img src="images/umb_red.png" width="100" height="100"></div>
+        <div class="products__item-2__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum mauris porttitor arcu blandit varius. Praesent maximus, dui et tincidunt tempus, lacus sapien bibendum urna, eu iaculis nulla dolor a sapien. In nec enim eu velit iaculis congue sit amet vestibulum nibh. Fusce non vehicula purus. Ut bibendum odio libero, vel mattis tortor gravida id. Aenean metus nisi, tincidunt ac nulla ac, consequat suscipit augue. Aenean eget enim nec leo euismod bibendum placerat sit amet purus. Pellentesque at luctus metus, ac accumsan neque. Duis ac sodales lectus. Ut sit amet mi eros. </div>
+      </div>
+      <div class="products__item-3" id="prod3">
+        <div class="products__item-3__img"><img src="images/umb_black.png" width="100" height="100"></div>
+        <div class="products__item-3__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum mauris porttitor arcu blandit varius. Praesent maximus, dui et tincidunt tempus, lacus sapien bibendum urna, eu iaculis nulla dolor a sapien. In nec enim eu velit iaculis congue sit amet vestibulum nibh. Fusce non vehicula purus. Ut bibendum odio libero, vel mattis tortor gravida id. Aenean metus nisi, tincidunt ac nulla ac, consequat suscipit augue. Aenean eget enim nec leo euismod bibendum placerat sit amet purus. Pellentesque at luctus metus, ac accumsan neque. Duis ac sodales lectus. Ut sit amet mi eros. </div>
+      </div>
+    </div>
   </div>
 </body>
+
 </html>
