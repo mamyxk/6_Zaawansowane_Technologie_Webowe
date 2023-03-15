@@ -258,7 +258,7 @@
   margin-top: 30px;
   margin-right: 10%;
   padding: 16px;
-  background: linear-gradient(to right, #5FCDD9, blue);
+  background: linear-gradient(to right, #5FCDD9, #04BF9D);
 }
 .products__item-1__img {
   max-width: 100px;
@@ -277,7 +277,7 @@
   margin-top: 30px;
   margin-right: 10%;
   padding: 16px;
-  background: linear-gradient(to right, #5FCDD9, blue);
+  background: linear-gradient(to right, #5FCDD9, #04BF9D);
 }
 .products__item-2__img {
   max-width: 100px;
@@ -296,7 +296,7 @@
   margin-top: 30px;
   margin-right: 10%;
   padding: 16px;
-  background: linear-gradient(to right, #5FCDD9, blue);
+  background: linear-gradient(to right, #5FCDD9, #04BF9D);
 }
 .products__item-3__img {
   max-width: 100px;
