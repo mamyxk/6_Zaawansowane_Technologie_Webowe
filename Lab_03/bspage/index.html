@@ -12,10 +12,12 @@
   <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" src="css/bootstrap/bootstrap.css">
   <!-- Google Fonts Roboto -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
   <!-- MDB -->
-  <link rel="stylesheet" href="css/mdb.min.css" />
+  <!-- <link rel="stylesheet" href="css/mdb.min.css" /> -->
+  <link rel="stylesheet" href="css/mdb.free.css" />
   <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -31,39 +33,46 @@
 </head>
 
 
-<body class="bg-green">
+<body class="bg-gray-800">
   <!--Navbar-->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark justify-content-center">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar pl-10 sticky-top navbar-expand-lg navbar-dark bg-dark justify-content-center">
+    <div class="container"><a class="navbar-brand" href="#main">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
-            aria-expanded="false">
-            Dropdown button
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#main">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#graf">Graph</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown"
+              aria-expanded="false">
+              Dropdown button
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#quotes">Cytaty</a></li>
+              <li><a class="dropdown-item" href="#qa">Pytania i odpowiedzi</a></li>
+              <li><a class="dropdown-item" href="#map">Na koniec mapka</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
+
 
   </nav>
   <!--/.Navbar-->
+
+  <button type="button" class="end-0 bottom-0 btn btn-primary position-fixed mb-5 mr-150">
+    <i class="fa fa-bars"></i>
+  </button>
+
   <div class="break-small mb-5"></div>
 
   <!--Main Navigation-->
@@ -73,7 +82,7 @@
   <!--Main Navigation-->
   <!--Main layout-->
   <main class="container">
-    <section class="row vh-100 gradient-custom">
+    <section class="row vh-100 gradient-custom pt-5" id="main">
       <div class="row text-center mx-auto display-2">
         <p>Lorem ipsum</p>
       </div>
@@ -120,7 +129,7 @@
       <div class="row mt-2">
       </div>
     </section>
-    <section class="row vh-100 gradient-custom">
+    <section class="row vh-100 gradient-custom pt-5" id="graf">
       <div class="row text-center mx-auto display-2">
         <p>Kiedy warto kupić parasol?</p>
       </div>
@@ -128,8 +137,8 @@
         <canvas id="lineChart"></canvas>
       </div>
     </section>
-    <section class="row vh-100 gradient-custom">
-      <div class="container py-5 h-100">
+    <section class="row vh-100 mt-5" id="quotes">
+      <div class="container py-5 h-90">
         <div class="row text-center mx-auto display-2">
           <p>Znane cytaty</p>
         </div>
@@ -155,7 +164,8 @@
                         <div class="col-md-8 col-lg-9 col-xl-8">
                           <div class="d-flex">
                             <div class="flex-shrink-0">
-                              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+                              <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/2019_Formula_One_tests_Barcelona%2C_Kubica_%2832309897777%29.jpg/1200px-2019_Formula_One_tests_Barcelona%2C_Kubica_%2832309897777%29.jpg"
                                 class="rounded-circle mb-4 mb-lg-0 shadow-2" alt="woman avatar" width="90" height="90">
                             </div>
                             <div class="flex-grow-1 ms-4 ps-3">
@@ -184,7 +194,8 @@
                         <div class="col-md-8 col-lg-9 col-xl-8">
                           <div class="d-flex">
                             <div class="flex-shrink-0">
-                              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                              <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinuxCon_Europe_Linus_Torvalds_03_%28cropped%29.jpg"
                                 class="rounded-circle mb-4 mb-lg-0 shadow-2" alt="woman avatar" width="90" height="90">
                             </div>
                             <div class="flex-grow-1 ms-4 ps-3">
@@ -232,7 +243,7 @@
         </div>
       </div>
     </section>
-    <section class="row vh-100 gradient-custom">
+    <section class="row vh-100 gradient-custom" id="qa">
       <div class="container py-5 h-100">
         <div class="row text-center mx-auto display-2">
           <p>Proste Q/A </p>
@@ -304,7 +315,7 @@
         </div>
       </div>
     </section>
-    <section class="row vh-100 gradient-custom">
+    <section class="row vh-100 gradient-custom" id="map">
       <div class="container py-5 h-100">
         <div class="row text-center mx-auto display-2">
           <p>Gdzie jesteśmy?</p>
@@ -319,10 +330,11 @@
     </section>
 
   </main>
+
+
   <!--Main layout-->
   <!--Footer-->
   <footer>
-    <button class="btn btn-secondary btn-float" type="button"><i class="material-icons">favorite_border</i></button>
   </footer>
   <!--Footer-->
 
@@ -367,6 +379,12 @@
       options: {
         responsive: true
       }
+    });
+    $(function () {
+      $('.btn-group-fab').on('click', '.btn', function () {
+        $('.btn-group-fab').toggleClass('active');
+      });
+      $('has-tooltip').tooltip();
     });
   </script>
   <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"
