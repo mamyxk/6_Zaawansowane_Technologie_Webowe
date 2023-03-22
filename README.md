@@ -7,7 +7,7 @@ Proj_sys_webowych
 - [x] Lista 1
 - [x] Lista 2 (8 na 10)
 - [x] Lista 3 (9 na 10)
-- [ ] Lista 4
+- [x] Lista 4 (8 na 10)
 - [ ] Lista 5
 - [ ] Lista 6
 - [ ] Lista 7
@@ -22,5 +22,6 @@ Proj_sys_webowych
 |:----------:|--------:|
 |     2      |       8 |
 |     3      |       9 |
-|  **Suma**  |   *17* |
-|   **MAX**  |   *20* |
+|     4      |       8 |
+|  **Suma**  |   *25* |
+|   **MAX**  |   *30* |
