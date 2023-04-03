@@ -7,5 +7,7 @@ import java.util.Collection;
 public interface IBookService {
     public abstract Collection<Book> getBooks();
 
-    public abstract Book getBook(int id);
+    public abstract Book checkBook(int id);
+
+
 }

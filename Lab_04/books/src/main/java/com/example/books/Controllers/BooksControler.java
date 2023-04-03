@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping("/api")
 @RestController
 public class BooksControler {
     @Autowired
@@ -21,6 +22,6 @@ public class BooksControler {
 
     @RequestMapping(value = "/get/book/{id}", method = RequestMethod.GET)
     public ResponseEntity<Object> getBook(@PathVariable("id") int id){
-        return new ResponseEntity<>(bookService.getBook(id), HttpStatus.OK);
+        return new ResponseEntity<>(bookService.checkBook(id), HttpStatus.OK);
     }
 }

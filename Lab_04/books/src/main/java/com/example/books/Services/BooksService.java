@@ -23,7 +23,7 @@ public class BooksService implements IBookService{
     }
 
     @Override
-    public Book getBook(int id){
+    public Book checkBook(int id){
         return booksRepo.stream()
                 .filter(b -> b.getId() == id)
                 .findAny()
