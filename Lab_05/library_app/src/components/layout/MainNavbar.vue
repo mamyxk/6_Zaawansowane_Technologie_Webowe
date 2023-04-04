@@ -26,7 +26,7 @@
                         <ul class="dropdown-menu" aria-labelledby="booksDropdown">
                             <li><router-link class="dropdown-item" to="/books/add-new">Create Book</router-link></li>
                             <li><router-link class="dropdown-item" to="/books/list">Book List</router-link></li>
-                            <li><a class="dropdown-item" href="#">Delete Book</a></li>
+                            <li><router-link class="dropdown-item" to="/books/delete">Delete Book</router-link></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -48,5 +48,14 @@
                 </ul>
             </div>
         </div>
-    </nav></template>
+    </nav>
+</template>
   
+<script>
+
+
+export default {
+    name: 'MainNavbar'
+};
+
+</script>
