@@ -1,39 +1,52 @@
 <template>
-    <nav class="navbar">
-        <ul>
-            <li><router-link to="/">Home</router-link></li>
-        </ul>
-    </nav>
-</template>
-  
-<script>
-export default {
-    name: 'MainNavbar',
-};
-</script>
-  
-<style scoped>
-.navbar {
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
-
-ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    margin-right: 20px;
-}
-
-li:last-child {
-    margin-right: 0;
-}
-</style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">My App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="authorsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Authors
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="authorsDropdown">
+                            <li><router-link class="dropdown-item" to="/authors/add-new">Create Author</router-link></li>
+                            <li><router-link class="dropdown-item" to="/authors/list">Author List</router-link></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="booksDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Books
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="booksDropdown">
+                            <li><router-link class="dropdown-item" to="/books/add-new">Create Book</router-link></li>
+                            <li><router-link class="dropdown-item" to="/books/list">Book List</router-link></li>
+                            <li><a class="dropdown-item" href="#">Delete Book</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Client
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><router-link class="dropdown-item" to="/create-client">Create Client</router-link></li>
+                            <li><router-link class="dropdown-item" to="/client-list">Show Clients</router-link></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/borrow">Borrow</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/return">Return</router-link>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav></template>
   
