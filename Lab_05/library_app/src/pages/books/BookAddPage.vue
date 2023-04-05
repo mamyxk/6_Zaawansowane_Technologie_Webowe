@@ -1,31 +1,43 @@
 <template>
-  <div class="add-book-form">
-    <h2>Add Book</h2>
-    <form @submit.prevent="submitForm">
-      <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" id="title" v-model="title" required>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+          <div class="card-header">
+            <h3 class="text-center font-weight-light my-4">Add Book</h3>
+          </div>
+          <div class="card-body">
+            <form @submit.prevent="submitForm">
+              <div class="form-floating mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" id="title" placeholder="Title" v-model="title" class="form-control" />
+              </div>
+              <div class="form-floating mb-3">
+                <label for="year" class="form-label">Year:</label>
+                <input type="number" id="year" placeholder="Year" v-model="year" class="form-control" />
+              </div>
+              <div class="form-floating mb-3">
+                <label for="author">Author:</label>
+                <br>
+                <select id="author" v-model.number="authorId" required class="form-control">
+                  <option v-for="author in authors" :key="author.id" :value="author.id">
+                    {{ author.firstName }} {{ author.lastName }}
+                  </option>
+                </select>
+              </div>
+              <div class="d-flex justify-content-center mt-4">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="year">Year:</label>
-        <input type="number" id="year" v-model.number="year" required>
-      </div>
-      <div class="form-group">
-        <label for="author">Author:</label>
-        <select id="author" v-model.number="authorId" required>
-          <option value="">Select an author</option>
-          <option v-for="author in authors" :key="author.id" :value="author.id">
-            {{ author.lastName }}, {{ author.firstName }}
-          </option>
-        </select>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    </div>
   </div>
 </template>
   
-  <script>
-  export default {
+<script>
+export default {
     data() {
       return {
         title: '',
@@ -59,5 +71,5 @@
       }
     }
   };
-  </script>
+</script>
   

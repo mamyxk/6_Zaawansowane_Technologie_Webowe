@@ -1,24 +1,23 @@
 <template>
-    <div>
-      <h1>Author List</h1>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="author in authors" :key="author.id">
-            <td>{{ author.id }}</td>
-            <td>{{ author.firstName }}</td>
-            <td>{{ author.lastName }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </template>
+  <div>
+    <h1 class="text-center mb-4">Author List</h1>
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="author in authors" :key="author.id">
+          <td>{{ author.firstName }}</td>
+          <td>{{ author.lastName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
   
   <script>
   export default {
