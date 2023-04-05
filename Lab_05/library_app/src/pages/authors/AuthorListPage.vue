@@ -1,7 +1,7 @@
 <template>
     <div>
       <h1>Author List</h1>
-      <table>
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>ID</th>

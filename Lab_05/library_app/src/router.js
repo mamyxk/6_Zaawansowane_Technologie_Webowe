@@ -9,6 +9,13 @@ import BookListPage from './pages/books/BookListPage'
 import BookAddPage from './pages/books/BookAddPage'
 import BookDeletePage from './pages/books/BookDeletePage'
 
+import CustomerAddPage from './pages/customers/CustomerAddPage'
+import CustomerListPage from './pages/customers/CustomerListPage'
+
+import BorrowBookPage from './pages/borrows/BorrowBookPage'
+import ReturnBookPage from './pages/borrows/ReturnBookPage'
+import BorrowListPage from './pages/borrows/BorrowListPage'
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -40,6 +47,36 @@ const router = createRouter({
         {
           path: 'delete',
           component: BookDeletePage
+        }
+      ]
+    },
+    {
+      path: '/customers',
+      children: [
+        {
+          path: 'add-new',
+          component: CustomerAddPage
+        },
+        {
+          path: 'list',
+          component: CustomerListPage
+        }
+      ]
+    },
+    {
+      path: '/borrowings',
+      children: [
+        {
+          path: 'borrow-book',
+          component: BorrowBookPage
+        },
+        {
+          path: 'return-book',
+          component: ReturnBookPage
+        },
+        {
+          path: 'all-borrowings',
+          component: BorrowListPage
         }
       ]
     }

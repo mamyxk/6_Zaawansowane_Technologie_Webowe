@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Book List</h1>
-        <table>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Title</th>

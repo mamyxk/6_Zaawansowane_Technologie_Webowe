@@ -1,28 +1,28 @@
 <template>
-    <div class="add-book-form">
-      <h2>Add Book</h2>
-      <form @submit.prevent="submitForm">
-        <div class="form-group">
-          <label for="title">Title:</label>
-          <input type="text" id="title" v-model="title" required>
-        </div>
-        <div class="form-group">
-          <label for="year">Year:</label>
-          <input type="number" id="year" v-model.number="year" required>
-        </div>
-        <div class="form-group">
-          <label for="author">Author:</label>
-          <select id="author" v-model.number="authorId" required>
-            <option value="">Select an author</option>
-            <option v-for="author in authors" :key="author.id" :value="author.id">
-              {{ author.lastName }}, {{ author.firstName }}
-            </option>
-          </select>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  </template>
+  <div class="add-book-form">
+    <h2>Add Book</h2>
+    <form @submit.prevent="submitForm">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" v-model="title" required>
+      </div>
+      <div class="form-group">
+        <label for="year">Year:</label>
+        <input type="number" id="year" v-model.number="year" required>
+      </div>
+      <div class="form-group">
+        <label for="author">Author:</label>
+        <select id="author" v-model.number="authorId" required>
+          <option value="">Select an author</option>
+          <option v-for="author in authors" :key="author.id" :value="author.id">
+            {{ author.lastName }}, {{ author.firstName }}
+          </option>
+        </select>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</template>
   
   <script>
   export default {

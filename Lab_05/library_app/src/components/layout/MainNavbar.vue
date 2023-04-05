@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">My App</a>
+            <a class="navbar-brand" href="/">My App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,15 +35,18 @@
                             Client
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><router-link class="dropdown-item" to="/create-client">Create Client</router-link></li>
-                            <li><router-link class="dropdown-item" to="/client-list">Show Clients</router-link></li>
+                            <li><router-link class="dropdown-item" to="/customers/add-new">Create Client</router-link></li>
+                            <li><router-link class="dropdown-item" to="/customers/list">Show Clients</router-link></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/borrow">Borrow</router-link>
+                        <router-link class="nav-link" to="/borrowings/borrow-book">Borrow</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/return">Return</router-link>
+                        <router-link class="nav-link" to="/borrowings/return-book">Return</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/borrowings/all-borrowings">Borrowings</router-link>
                     </li>
                 </ul>
             </div>
