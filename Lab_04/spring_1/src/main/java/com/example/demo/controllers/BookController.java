@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.BookAllDTO;
 import com.example.demo.models.Author;
 import com.example.demo.models.Book;
 import com.example.demo.repository.AuthorRepository;
@@ -10,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/books")
@@ -39,9 +42,39 @@ public class BookController {
         return ResponseEntity.ok(book);
     }
 
-    @GetMapping("/get-all")
-    public ResponseEntity<Object> getAllBooks() {
+    @GetMapping("/get-all-full")
+    public ResponseEntity<Object> getAllBooksFull() {
         List<Book> books = bookRepository.findAll();
         return ResponseEntity.ok(books);
     }
+
+    @GetMapping("/get-all")
+    public ResponseEntity<Object> getAllBooks() {
+        List<Book> books = bookRepository.findAll();
+
+        List<BookAllDTO> bookDtos = books.stream()
+                .filter(book -> !book.getDeleted()) // exclude deleted books
+                .map(book -> new BookAllDTO(
+                        book.getId(),
+                        book.getName(),
+                        book.getYear(),
+                        book.getAuthor()))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(bookDtos);
+    }
+
+    @GetMapping("/delete-book/{id}")
+    public ResponseEntity<Object> deleteBook(@PathVariable Long id) {
+        Optional<Book> optionalBook = bookRepository.findById(id);
+        if (optionalBook.isPresent()) {
+            Book book = optionalBook.get();
+            book.setDeleted(true);
+            bookRepository.save(book);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

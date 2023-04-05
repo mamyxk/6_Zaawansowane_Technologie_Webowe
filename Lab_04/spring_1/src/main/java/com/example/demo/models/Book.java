@@ -14,6 +14,9 @@ public class Book {
     @Column(name="`year`", nullable=false)
     private int year;
 
+    @Column(columnDefinition = "BOOLEAN DEFAULT FALSE", nullable = false)
+    private boolean deleted;
+
     @ManyToOne
     private Author author;
 
@@ -24,6 +27,7 @@ public class Book {
         this.name = name;
         this.year = year;
         this.author = author;
+        this.deleted = false;
     }
 
     // Getters and setters
@@ -59,6 +63,10 @@ public class Book {
     public void setAuthor(Author author) {
         this.author = author;
     }
+
+    public boolean getDeleted() {return deleted;}
+
+    public void setDeleted(boolean deleted) {this.deleted = deleted;}
 
     // toString method
 
