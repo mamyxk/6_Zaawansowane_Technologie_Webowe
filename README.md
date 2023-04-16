@@ -1,8 +1,5 @@
 # 6_Zaawansowane_Technologie_Webowe
 
-# 5_webowki
-Proj_sys_webowych
-
 ## Listy zadań
 - [x] Lista 1
 - [x] Lista 2 (8 na 10)
@@ -10,7 +7,7 @@ Proj_sys_webowych
 - [x] Lista 4 (8 na 10)
 - [x] Lista 5 (8 na 10)
 - [x] Lista 6 (8 na 10)
-- [ ] Lista 7
+- [x] Lista 7 (7 na 10)
 - [ ] Lista 8
 - [ ] Projekt
 
@@ -25,5 +22,6 @@ Proj_sys_webowych
 |     4      |       8 |
 |     5      |       8 |
 |     6      |       8 |
-|  **Suma**  |   *41* |
-|   **MAX**  |   *50* |
+|     7      |       7 |
+|  **Suma**  |   *48* |
+|   **MAX**  |   *60* |
