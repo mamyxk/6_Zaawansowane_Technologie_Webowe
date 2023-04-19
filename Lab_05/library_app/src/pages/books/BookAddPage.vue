@@ -65,9 +65,11 @@ export default {
         });
         const data = await response.json();
         console.log(data);
-        this.title = '';
-        this.year = null;
-        this.authorId = null;
+        // this.title = '';
+        // this.year = null;
+        // this.authorId = null;
+        this.$router.push('/books/list');
+
       }
     }
   };

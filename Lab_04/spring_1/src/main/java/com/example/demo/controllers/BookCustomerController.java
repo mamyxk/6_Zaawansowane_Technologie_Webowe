@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.BookCustomerActiveDTO;
 import com.example.demo.models.Author;
 import com.example.demo.models.Book;
 import com.example.demo.models.BookCustomer;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/borrowings")
@@ -32,7 +35,9 @@ public class BookCustomerController {
     private CustomerRepository customerRepository;
 
     @PostMapping("/borrow-book")
-    public ResponseEntity<BookCustomer> borrowBook(@RequestParam Long bookId, @RequestParam Long customerId) {
+    public ResponseEntity<BookCustomer> borrowBook(@RequestBody Map<String, Long> request) {
+        Long bookId = request.get("bookId");
+        Long customerId = request.get("customerId");
         Optional<Book> optionalBook = bookRepository.findById(bookId);
         Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
 
@@ -54,7 +59,8 @@ public class BookCustomerController {
     }
 
     @PostMapping("/hand-back-book")
-    public ResponseEntity<BookCustomer> handBackBook(@RequestParam Long bookCustomerId) {
+    public ResponseEntity<BookCustomer> handBackBook(@RequestBody Map<String, Long> request){
+        Long bookCustomerId = request.get("bookCustomerId");
         Optional<BookCustomer> optionalBookCustomer = bookCustomerRepository.findById(bookCustomerId);
 
         if (!optionalBookCustomer.isPresent()) {
@@ -74,4 +80,15 @@ public class BookCustomerController {
         List<BookCustomer> bookCustomers = bookCustomerRepository.findAll();
         return ResponseEntity.ok(bookCustomers);
     }
+
+    @GetMapping("/book-customers-active")
+    public ResponseEntity<List<BookCustomerActiveDTO>> getAllActiveBookCustomersActive() {
+        List<BookCustomer> bookCustomers = bookCustomerRepository.findAll();
+        List<BookCustomerActiveDTO> activeBookCustomers = bookCustomers.stream()
+                .filter(bookCustomer -> bookCustomer.getEndDate() == null)
+                .map(BookCustomerActiveDTO::new)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(activeBookCustomers);
+    }
+
 }

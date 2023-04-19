@@ -3,7 +3,9 @@ package com.example.demo.controllers;
 import com.example.demo.dto.BookAllDTO;
 import com.example.demo.models.Author;
 import com.example.demo.models.Book;
+import com.example.demo.models.BookCustomer;
 import com.example.demo.repository.AuthorRepository;
+import com.example.demo.repository.BookCustomerRepository;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.request.BookRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class BookController {
 
     @Autowired
     private AuthorRepository authorRepository;
+
+    @Autowired
+    private BookCustomerRepository bookCustomerRepository;
 
     @PostMapping("/add-book")
     public ResponseEntity<Book> createBook(@RequestBody BookRequest bookRequest) {
@@ -64,7 +69,28 @@ public class BookController {
         return ResponseEntity.ok(bookDtos);
     }
 
-    @GetMapping("/delete-book/{id}")
+    @GetMapping("/get-all-avail")
+    public ResponseEntity<Object> getAllBooksAvail() {
+        List<Book> books = bookRepository.findAll();
+
+        List<BookAllDTO> bookDtos = books.stream()
+                .filter(book -> !book.getDeleted()) // exclude deleted books
+                .filter(book -> {
+                    List<BookCustomer> bookCustomers = bookCustomerRepository.findByBook(book);
+                    return bookCustomers.stream().noneMatch(bc -> bc.getStartDate() != null && bc.getEndDate() == null);
+                })
+                .map(book -> new BookAllDTO(
+                        book.getId(),
+                        book.getName(),
+                        book.getYear(),
+                        book.getAuthor()))
+                .collect(Collectors.toList());
+
+
+        return ResponseEntity.ok(bookDtos);
+    }
+
+    @DeleteMapping("/delete-book/{id}")
     public ResponseEntity<Object> deleteBook(@PathVariable Long id) {
         Optional<Book> optionalBook = bookRepository.findById(id);
         if (optionalBook.isPresent()) {

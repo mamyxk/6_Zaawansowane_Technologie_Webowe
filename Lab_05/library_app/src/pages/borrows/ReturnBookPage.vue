@@ -12,17 +12,13 @@
                 <div class="form-floating mb-3">
                   <label for="borrow">Borrow:</label>
                   <br>
-                  <select id="borrow" v-model.number="cusomerBookId" required class="form-control">
+                  <select id="borrow" v-model.number="bookCustomerId" required class="form-control">
                     <option v-for="borrow in customersBooks" :key="borrow.id" :value="borrow.id">
-                        {{customersBooks.customer.firstName}} {{customersBooks.customer.lastName}}
-                        - {{customersBooks.book.author.firstName}} : "{{ customersBooks.book.name }}"
+                      {{ borrow.book.id }} - {{ borrow.book.name }} - {{ borrow.customer.lastName }} {{
+                        borrow.customer.firstName }} - {{ borrow.customer.id }} - {{ borrow.startDate }}
                     </option>
                   </select>
                 </div>
-              </div>
-              <div class="form-floating mb-3">
-                <label for="sd">Date of Return:</label>
-                <input type="date" class="form-control" id="sd" placeholder="Enter date of return" v-model="dor">
               </div>
               <div class="d-flex justify-content-center mt-4">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -34,32 +30,34 @@
     </div>
   </div>
 </template>
-  
+
 <script>
 export default {
   data() {
     return {
-      customerBookId: null,
-      dor: null,
+      bookCustomerId: null,
       customersBooks: []
     };
   },
   async created() {
-    const response = await fetch('http://localhost:8080/api/borrowings/book-customers');
+    const response = await fetch('http://localhost:8080/api/borrowings/book-customers-active');
     this.customersBooks = await response.json();
   },
   methods: {
     async handleSubmit() {
+      const selectedBook = this.customersBooks.find(book => book.id === this.bookCustomerId);
+      const { id } = selectedBook;
       const response = await fetch('http://localhost:8080/api/borrowings/hand-back-book', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          endDate: this.dor
+          bookCustomerId: id
         })
       });
       const data = await response.json();
+      this.$router.push('/');
       console.log(data);
     }
   }

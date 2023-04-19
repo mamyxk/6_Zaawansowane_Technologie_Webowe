@@ -19,27 +19,25 @@
 </template>
 
   
-  <script>
-  export default {
-    name: 'AuthorListPage',
-    data() {
-      return {
-        authors: []
-      }
-    },
-    mounted() {
-      this.loadAuthors();
-    },
-    methods: {
-      async loadAuthors() {
-        try {
-          const response = await fetch('http://localhost:8080/api/authors/get');
-          const data = await response.json();
-          this.authors = data;
-        } catch (error) {
-          console.error(error);
-        }
-      }
+<script>
+export default {
+  name: 'AuthorListPage',
+  data() {
+    return {
+      authors: []
     }
-  };
-  </script>
+  },
+  mounted() {
+    this.loadAuthors();
+  },
+  methods: {
+    async loadAuthors() {
+      await fetch('http://localhost:8080/api/authors/get')
+        .then((response) => response.json())
+        .then((data) => {
+          this.authors = data;
+        })
+    }
+  }
+};
+</script>

@@ -10,11 +10,13 @@
             <form @submit.prevent="handleSubmit">
               <div class="form-floating mb-3">
                 <label for="first-name" class="form-label">First Name:</label>
-                <input type="text" id="first-name" placeholder="First Name" v-model="customer.firstName" class="form-control" />
+                <input type="text" id="first-name" placeholder="First Name" v-model="customer.firstName"
+                  class="form-control" />
               </div>
               <div class="form-floating mb-3">
                 <label for="last-name" class="form-label">Last Name:</label>
-                <input type="text" id="last-name" placeholder="Last Name" v-model="customer.lastName" class="form-control" />
+                <input type="text" id="last-name" placeholder="Last Name" v-model="customer.lastName"
+                  class="form-control" />
               </div>
               <div class="form-floating mb-3">
                 <label for="email" class="form-label">Email:</label>
@@ -50,22 +52,20 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      try {
-        const response = await fetch('http://localhost:8080/api/customers/add-customer', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.customer),
-        });
-        if (!response.ok) {
-          throw new Error('Failed to add customer');
-        }
-        // Handle successful response here
-      } catch (error) {
-        console.error(error);
-        // Handle error here
+
+      const response = await fetch('http://localhost:8080/api/customers/add-customer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.customer),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to add customer');
       }
+      this.$router.push('/customers/list');
+      // Handle successful response here
+
     },
   },
 };

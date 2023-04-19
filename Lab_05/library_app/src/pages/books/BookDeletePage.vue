@@ -14,7 +14,7 @@
             <tr v-for="book in books" :key="book.id">
                 <td>{{ book.name }}</td>
                 <td>{{ book.year }}</td>
-                <td>{{ book.author.firstName }} {{ book.author.lastName }}</td>
+                <td>{{ book.authorName.firstName }} {{ book.authorName.lastName }}</td>
                 <td>
                     <button class="btn btn-danger" @click="deleteBook(book.id)">Delete</button>
                 </td>
@@ -33,7 +33,7 @@ export default {
         }
     },
     mounted() {
-        fetch('http://localhost:8080/api/books/get-all-full')
+        fetch('http://localhost:8080/api/books/get-all-avail')
             .then(response => response.json())
             .then(data => {
                 this.books = data
@@ -45,7 +45,7 @@ export default {
     methods: {
         deleteBook(bookId) {
             fetch('http://localhost:8080/api/books/delete', {
-                method: 'POST',
+                method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id: bookId })
             })
