@@ -8,7 +8,7 @@
 - [x] Lista 5 (8 na 10)
 - [x] Lista 6 (8 na 10)
 - [x] Lista 7 (7 na 10)
-- [ ] Lista 8
+- [x] Lista 8 (9 na 10)
 - [ ] Projekt
 
 ### Koniec
@@ -23,5 +23,6 @@
 |     5      |       8 |
 |     6      |       8 |
 |     7      |       7 |
+|     8      |       9 |
 |  **Suma**  |   *48* |
 |   **MAX**  |   *60* |
